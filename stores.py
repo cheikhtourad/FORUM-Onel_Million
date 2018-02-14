@@ -8,10 +8,12 @@ class MemberStore:
         return self.members
 
     def add(self, member):
-        self.members.append(member)
+        all_members = self.get_all()
+        all_members.append(member)
 
     def get_by_id(self, id):
-        for x in self.members:
+        all_members = self.get_all()
+        for x in all_members:
             if id == x.id:
                 return x
         return False
@@ -24,14 +26,16 @@ class MemberStore:
         return "the member don't exist"
 
     def deleted(self, id):
-        for x in self.members:
+        all_members = self.get_all()
+        for x in all_members:
             if id == x.id:
-                self.members.remove(x)
-                return self.members
+                all_members.remove(x)
+                return all_members
         return False
 
     def entity_exists(self, member):
-        for x in self.members:
+        all_members = self.get_all()
+        for x in all_members:
             if member == x:
                 return True
         return False
